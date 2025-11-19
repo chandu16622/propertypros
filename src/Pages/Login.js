@@ -1,177 +1,151 @@
-// src/Pages/Login.js
 import React, { useState } from "react";
-import logo from "../images/logo.jpg"; // update path if needed
+import { Form, Button } from "react-bootstrap";
+import Hero from "../images/hero.jpg";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const handleGoogleLogin = () => {
-    alert("Google Login Clicked (connect backend here)");
-  };
+  const togglePassword = () => setShowPassword(!showPassword);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    alert("Login clicked (add your validation / backend here)");
+    navigate("/");
   };
 
   return (
     <>
-      <div className="login-wrapper">
-        <div className="login-container">
-
-          {/* LEFT SIDE IMAGE */}
-          <div className="left-side">
-            <img
-              src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1400&q=80"
-              alt="Real Estate"
-              className="left-image"
-            />
-          </div>
-
-          {/* RIGHT SIDE FORM */}
-          <div className="right-side">
-            <div className="form-box">
-              
-              {/* Logo */}
-              <div className="text-center mb-3">
-                <img
-                  src={logo}
-                  alt="logo"
-                  style={{ width: 80, height: 80, borderRadius: "10px" }}
-                />
-              </div>
-
-              <h2 className="fw-bold text-dark text-center mb-2">
-                Welcome Back
-              </h2>
-              <p className="text-muted text-center">
-                Login to continue with PropertyPro
-              </p>
-
-              {/* LOGIN FORM */}
-              <form onSubmit={handleLogin}>
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control custom-input mb-3"
-                  placeholder="example@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-control custom-input mb-3"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-
-                <button type="submit" className="btn btn-warning w-100 fw-semibold mt-2">
-                  Login
-                </button>
-              </form>
-
-              <p className="mt-3 text-center">
-                Don’t have an account?{" "}
-                <a href="#" className="fw-semibold text-dark">
-                  Sign Up
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* STYLES */}
       <style>{`
-        .login-wrapper {
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1400&q=80');
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        /* FULL BACKGROUND IMAGE */
+        .full-container {
+          height: 100vh;
+          width: 100%;
+          background-image: url(${Hero});
           background-size: cover;
           background-position: center;
-          padding: 30px;
-        }
-
-        .login-container {
-          width: 100%;
-          max-width: 1000px;
           display: flex;
-          background: rgba(255, 255, 255, 0.92);
-          backdrop-filter: blur(8px);
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-        }
-
-        .left-side {
-          width: 50%;
-        }
-
-        .left-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .right-side {
-          width: 50%;
-          padding: 40px;
-          display: flex;
+          justify-content: flex-end;
           align-items: center;
-          justify-content: center;
         }
 
+        /* GLASS FORM ON RIGHT */
         .form-box {
-          width: 100%;
-          max-width: 350px;
+          width: 330px;
+          padding: 30px;
+          margin-right: 467px;
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .custom-input {
-          border-radius: 10px;
-          padding: 12px;
-        }
-
-        .divider {
+        .brand-wrapper {
           text-align: center;
-          margin: 15px 0;
-          color: #888;
+          margin-bottom: 20px;
+        }
+
+        .brand {
+          font-size: 32px;
+          color: #f8bf03d3;
+          font-weight: bold;
+        }
+
+        .tagline {
+          margin-bottom: 20px;
+          color: #fff;
           font-size: 14px;
+        }
+
+        .text-white {
+          color: #fff;
+        }
+
+        .input-box {
+          margin-bottom: 15px;
+        }
+
+        .password-box {
           position: relative;
+          margin-bottom: 10px;
         }
 
-        .divider:before,
-        .divider:after {
-          content: "";
-          height: 1px;
-          width: 40%;
-          background: #ccc;
+        .eye-icon {
           position: absolute;
-          top: 50%;
+          right: 12px;
+          top: 9px;
+          cursor: pointer;
+          color: #ccc;
         }
 
-        .divider:before {
-          left: 0;
+        .login-btn {
+          width: 100%;
+          padding: 10px;
+          background: #e2b00ad3;
+          border: none;
+          color: white;
+          border-radius: 8px;
+          font-size: 16px;
         }
 
-        .divider:after {
-          right: 0;
-        }
-
-        @media (max-width: 900px) {
-          .left-side {
-            display: none;
-          }
-          .right-side {
-            width: 100%;
-          }
+        .signup-text {
+          text-align: center;
+          margin-top: 15px;
+          font-size: 14px;
+          color: #fff;
         }
       `}</style>
+
+      <div className="full-container">
+
+        <div className="form-box">
+          <div className="brand-wrapper">
+            <h1 className="brand">Property Pro</h1>
+            <p className="tagline text-black">Your trusted properties across India </p>
+          </div>
+
+          <Form onSubmit={handleLogin}>
+            <div className="text-white">Email</div>
+            <Form.Control
+              type="email"
+              placeholder="Enter your email"
+              className="input-box"
+              required
+            />
+
+            <div className="text-white">Password</div>
+            <div className="password-box">
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                required
+              />
+              <span className="eye-icon" onClick={togglePassword}>
+                <i className="fa-regular fa-eye"></i>
+              </span>
+            </div>
+
+            <button
+                  type="submit"
+                  className="btn btn-warning w-100 fw-semibold mt-2"
+                >
+                  Login
+                </button>
+
+            <p className="signup-text">
+              Don't have an account? <a href="/signup" style={{ color: "#0a0a0aff" }}>Sign up</a>
+            </p>
+          </Form>
+        </div>
+
+      </div>
     </>
   );
 }
