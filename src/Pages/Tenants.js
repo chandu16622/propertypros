@@ -1,5 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  FaShieldAlt,
+  FaHome,
+  FaUserCheck,
+  FaHandshake,
+  FaFileSignature,
+  FaArrowRight,
+} from "react-icons/fa";
 
 function Tenants() {
   const navigate = useNavigate();
@@ -9,69 +17,140 @@ function Tenants() {
   };
 
   return (
-    <div className="container py-5">
-      <div className="text-center mt-4">
-        <h1 className="text-warning fw-bold">For Tenants</h1>
-        <p className="lead text-muted">
-          Find comfortable, budget-friendly rental homes with verified landlords,
-          secure agreements, and seamless rental assistance.
+    <div
+      className="tenant-page container-fluid"
+      style={{
+        paddingTop: "130px", // fixes navbar overlap
+        paddingBottom: "80px",
+        background: "linear-gradient(135deg, #fdf7e3 0%, #fff3c4 100%)",
+      }}
+    >
+      {/* HEADER */}
+      <div className="text-center mb-5" data-aos="fade-up">
+        <h1
+          className="fw-bold mb-3"
+          style={{ color: "#ffb300", fontSize: "3rem", letterSpacing: "1px" }}
+        >
+          Renting Made Modern & Easy
+        </h1>
+        <p className="lead text-muted" style={{ maxWidth: "700px", margin: "0 auto" }}>
+          Discover comfortable, budget-friendly, and verified rental homes backed by
+          trusted landlords and digital rental services designed for the modern tenant.
         </p>
       </div>
 
-      <div className="row g-4">
-        {/* Left Section */}
-        <div className="col-md-6">
-          <div className="card shadow-lg border-0 h-100 p-4">
-            <h4 className="fw-bold mb-3 text-dark">Why Rent With Us?</h4>
-            <p className="text-muted">
-              Renting a home should be simple, safe, and stress-free. We offer
-              verified rental options, transparent pricing, and landlord support to
-              make your rental journey smooth from search to move-in.
-            </p>
+      {/* MAIN CARDS SECTION */}
+      <div className="container">
+        <div className="row g-4">
 
-            <ul className="list-group list-group-flush mt-3">
-              <li className="list-group-item">✔ Verified Rental Properties</li>
-              <li className="list-group-item">✔ Zero-Brokerage Options Available</li>
-              <li className="list-group-item">✔ Safe & Verified Landlords</li>
-              <li className="list-group-item">✔ Transparent Rent & Deposit Details</li>
-              <li className="list-group-item">✔ Quick Online Rental Agreement Support</li>
-            </ul>
+          {/* Left Card */}
+          <div className="col-md-6" data-aos="fade-right">
+            <div className="tenant-card shadow-lg">
+              <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
+                <FaShieldAlt className="me-2 text-warning fs-3" />
+                Why Rent With Us?
+              </h4>
+
+              <p className="text-muted">
+                Renting your next home should be stress-free, secure, and fully transparent.
+                We simplify the process using next-gen tools, verified listings, and digital
+                support.
+              </p>
+
+              <ul className="tenant-list mt-3">
+                <li>✔ Verified Rental Properties Only</li>
+                <li>✔ Zero-Brokerage Homes Available</li>
+                <li>✔ Safe, Verified Landlords</li>
+                <li>✔ Transparent Rent & Security Deposit</li>
+                <li>✔ Quick Online Rental Agreement Assistance</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Card */}
+          <div className="col-md-6" data-aos="fade-left">
+            <div className="tenant-card shadow-lg">
+              <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
+                <FaHome className="me-2 text-warning fs-3" />
+                What You Get
+              </h4>
+
+              <p className="text-muted">
+                Explore thousands of homes built for every kind of tenant—from families to
+                working professionals & students. Experience the future of renting.
+              </p>
+
+              <ul className="tenant-list mt-3">
+                <li>🏠 Fully-Furnished & Semi-Furnished Rentals</li>
+                <li>🔐 Secure Digital Agreements</li>
+                <li>💬 Direct Chat with Landlords</li>
+                <li>📅 Instant Visit Scheduling</li>
+                <li>💳 Online Monthly Rent Payments</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Right Section */}
-        <div className="col-md-6">
-          <div className="card shadow-lg border-0 h-100 p-4">
-            <h4 className="fw-bold mb-3 text-dark">What You Get</h4>
-
-            <p className="text-muted">
-              We help tenants explore a wide range of rental homes — from family
-              apartments to fully-furnished rooms and shared accommodations.
-              Experience convenience with digital rent payments, virtual tours, and
-              24/7 rental support.
-            </p>
-
-            <ul className="list-group list-group-flush mt-3">
-              <li className="list-group-item">🏠 Fully-Furnished & Semi-Furnished Options</li>
-              <li className="list-group-item">🔐 Secure Digital Rental Agreements</li>
-              <li className="list-group-item">💬 Direct Chat with Landlords</li>
-              <li className="list-group-item">📅 Schedule Visits Instantly</li>
-              <li className="list-group-item">💳 Easy Monthly Rent Payments Online</li>
-            </ul>
-          </div>
+        {/* BUTTON */}
+        <div className="text-center mt-5" data-aos="zoom-in">
+          <button
+            className="explore-btn btn btn-warning text-dark fw-semibold px-5 py-3 rounded-pill"
+            onClick={handleExplore}
+            style={{
+              fontSize: "1.2rem",
+              boxShadow: "0 12px 25px rgba(0,0,0,0.15)",
+              transition: "all 0.3s ease",
+            }}
+          >
+            Explore Rentals <FaArrowRight className="ms-2" />
+          </button>
         </div>
       </div>
 
-      {/* Button Section */}
-      <div className="text-center mt-5">
-       <button
-  className="btn btn-warning text-dark fw-semibold px-4 py-2 rounded-pill"
-  onClick={handleExplore}
->
-  Explore Rentals
-</button>
+      {/* CUSTOM CSS */}
+      <style>{`
+        .tenant-card {
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+          padding: 35px;
+          border-radius: 20px;
+          transition: all 0.35s ease;
+          border: 1px solid rgba(255, 193, 7, 0.25);
+        }
 
-      </div>
+        .tenant-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+          background: rgba(255, 255, 255, 0.92);
+        }
+
+        .tenant-list li {
+          background: transparent;
+          border: none;
+          padding: 10px 0;
+          font-size: 0.95rem;
+          color: #444;
+          border-bottom: 1px dashed #ddd;
+        }
+
+        .tenant-list li:last-child {
+          border-bottom: none;
+        }
+
+        .explore-btn:hover {
+          transform: scale(1.06);
+          box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 2.2rem !important;
+          }
+          .tenant-card {
+            padding: 25px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

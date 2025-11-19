@@ -1,5 +1,6 @@
 // src/Pages/ProjectDetails.js
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -70,6 +71,15 @@ const projects = [
 function ProjectDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    date: "",
+    time: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   // ✅ Scroll to top whenever this component loads or id changes
   useEffect(() => {
@@ -118,11 +128,121 @@ function ProjectDetails() {
             <li className="list-group-item">✅ Near Schools & Shopping Centers</li>
           </ul>
 
-          <button className="btn btn-warning text-dark fw-bold px-4 rounded-pill">
+          <button
+            className="btn btn-warning text-dark fw-bold px-4 rounded-pill"
+            onClick={() => setShowForm(true)}
+          >
             Schedule a Visit
           </button>
+
         </div>
       </div>
+      {/* === Schedule Visit Form Modal === */}
+      {showForm && (
+        <div
+          className="modal fade show d-block"
+          style={{ background: "rgba(0,0,0,0.6)", zIndex: 2000 }}
+          onClick={() => setShowForm(false)}
+        >
+          <div
+            className="modal-dialog modal-dialog-centered"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-content border-0 shadow-lg rounded-4 p-3">
+
+              {/* SUCCESS MESSAGE */}
+              {submitted ? (
+                <div className="text-center p-4">
+                  <h4 className="text-success fw-bold">Visit Scheduled Successfully!</h4>
+                  <p className="text-muted">
+                    Our team will contact you shortly.
+                  </p>
+                  <button
+                    className="btn btn-warning rounded-pill px-4 mt-3"
+                    onClick={() => {
+                      setShowForm(false);
+                      setSubmitted(false);
+                    }}
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <h4 className="fw-bold mb-3 text-warning text-center">
+                    Schedule a Site Visit
+                  </h4>
+
+                  <div className="modal-body">
+
+                    {/* Name */}
+                    <input
+                      type="text"
+                      className="form-control mb-3"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                    />
+
+                    {/* Phone */}
+                    <input
+                      type="text"
+                      className="form-control mb-3"
+                      placeholder="Mobile Number"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                    />
+
+                    {/* Date */}
+                    <input
+                      type="date"
+                      className="form-control mb-3"
+                      value={formData.date}
+                      onChange={(e) =>
+                        setFormData({ ...formData, date: e.target.value })
+                      }
+                    />
+
+                    {/* Time */}
+                    <input
+                      type="time"
+                      className="form-control mb-3"
+                      value={formData.time}
+                      onChange={(e) =>
+                        setFormData({ ...formData, time: e.target.value })
+                      }
+                    />
+
+                    {/* Message */}
+                    <textarea
+                      className="form-control mb-3"
+                      rows="3"
+                      placeholder="Any message (optional)"
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
+                    ></textarea>
+
+                    {/* Submit Button */}
+                    <button
+                      className="btn btn-warning w-100 rounded-pill fw-bold"
+                      onClick={() => setSubmitted(true)}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

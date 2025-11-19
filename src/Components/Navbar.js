@@ -28,7 +28,7 @@ function Navbar() {
                 background:
                     scrolled || location.pathname !== "/"
                         ? "rgba(0, 0, 0, 0.8)"
-                        : "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.2))",
+                        : "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(175, 128, 9, 0.3))",
                 backdropFilter: "blur(8px)",
                 transition: "background-color 0.4s ease, box-shadow 0.3s ease",
                 boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.4)" : "none",
@@ -65,7 +65,7 @@ function Navbar() {
                             </li>
                         ))}
 
-                        <li className="nav-item mx-2">
+                        <li className="nav-item mx-3">
                             <Link
                                 to="/login"
                                 className="btn btn-outline-warning text-white px-3 rounded-pill fw-semibold btn-sm"
@@ -73,7 +73,7 @@ function Navbar() {
                                 Login
                             </Link>
                         </li>
-                        <li className="nav-item mx-2">
+                        <li className="nav-item mx-3">
                             <Link
                                 to="/signup"
                                 className="btn btn-outline-warning text-white px-3 rounded-pill fw-semibold btn-sm"

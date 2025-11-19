@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -74,6 +76,8 @@ function LandingPage() {
             }
         };
     };
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         AOS.init({ duration: 1000, once: true, offset: 100 });
@@ -109,6 +113,134 @@ function LandingPage() {
     // Lazy image props
     const imgProps = { loading: "lazy", decoding: "async" };
 
+
+    function HeroSearch() {
+        const navigate = useNavigate();
+        const [keyword, setKeyword] = useState("");
+        const [mode, setMode] = useState("Buy");
+        const [budget, setBudget] = useState("");
+
+        const handleSearch = () => {
+            let route = "/";
+
+            if (mode === "Buy") route = "/buyers";
+            if (mode === "Sell") route = "/sellers";
+            if (mode === "PG / Co-living") route = "/rentals";
+
+            navigate(`${route}?search=${keyword}&budget=${budget}`);
+        };
+
+        return (
+            <div className="row justify-content-center" data-aos="zoom-in">
+                <div className="col-lg-8 bg-light p-4 rounded shadow-lg">
+                    <div className="row g-3">
+
+                        {/* Search */}
+                        <div className="col-md-4">
+                            <input
+                                type="text"
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                className="form-control"
+                                placeholder="Search city, locality, or project"
+                            />
+                        </div>
+
+                        {/* Dropdown */}
+                        <div className="col-md-3">
+                            <select
+                                className="form-select"
+                                value={mode}
+                                onChange={(e) => setMode(e.target.value)}
+                            >
+                                <option>Buy</option>
+                                <option>Sell</option>
+                                <option>PG / Co-living</option>
+                            </select>
+                        </div>
+
+                        {/* Budget */}
+                        <div className="col-md-3">
+                            <input
+                                type="number"
+                                className="form-control"
+                                placeholder="Budget (₹)"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
+                            />
+                        </div>
+
+                        {/* Button */}
+                        <div className="col-md-2 d-grid">
+                            <button
+                                onClick={handleSearch}
+                                className="btn btn-warning text-dark fw-bold"
+                            >
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // CHAT STATES
+    const [chatMessages, setChatMessages] = useState([]);
+    const [userInput, setUserInput] = useState("");
+    // ===== LOCAL AI ENGINE (Option A) =====
+    const getAIReply = (text) => {
+        text = text.toLowerCase();
+
+        if (text.includes("hi") || text.includes("hello")) {
+            return "Hello! 👋 How can I help you with your property needs today?";
+        }
+
+        if (text.includes("buy")) {
+            return "Great! 🏠 Are you looking for apartments, villas or open plots? And which city?";
+        }
+
+        if (text.includes("sell")) {
+            return "Selling a property? Please share your location, property type and expected price.";
+        }
+
+        if (text.includes("rent") || text.includes("pg")) {
+            return "Sure! I can help you get rentals/PG options. Which location and budget?";
+        }
+
+        if (text.includes("budget")) {
+            return "Please tell me your budget range and I will suggest options!";
+        }
+
+        if (text.includes("location") || text.includes("city")) {
+            return "Please type your preferred city or locality! 😊";
+        }
+
+        if (text.includes("thank")) {
+            return "You're welcome! Happy to help any time 😊";
+        }
+
+        return "I can help you with buying, selling or renting properties. Tell me what you're looking for!";
+    };
+
+    // SEND MESSAGE
+    const sendMessage = () => {
+        if (!userInput.trim()) return;
+
+        // Add user message
+        setChatMessages((prev) => [...prev, { sender: "user", text: userInput }]);
+
+        const aiReply = getAIReply(userInput);
+        setUserInput("");
+
+        // Simulate AI typing
+        setTimeout(() => {
+            setChatMessages((prev) => [...prev, { sender: "ai", text: aiReply }]);
+        }, 600);
+    };
+
+
+
     return (
         <div >
             {/* ===== HERO SECTION ===== */}
@@ -118,13 +250,9 @@ function LandingPage() {
                     height: "100vh",
                     background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${hero}) center/cover no-repeat`,
                     backgroundAttachment: "scroll",
-                    marginTop: "0",
-                    paddingTop: "0",
                     position: "relative",
-                    marginTop: "0", // make sure there’s no offset
                 }}
             >
-
                 <div className="container" data-aos="fade-up">
                     <h1 className="display-4 fw-bold mb-3">
                         Find Your Perfect <span className="text-warning">Home</span>
@@ -134,40 +262,11 @@ function LandingPage() {
                         locations.
                     </p>
 
-                    <div className="row justify-content-center" data-aos="zoom-in">
-                        <div className="col-lg-8 bg-light p-4 rounded shadow-lg">
-                            <div className="row g-3">
-                                <div className="col-md-4">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Search city, locality, or project"
-                                    />
-                                </div>
-                                <div className="col-md-3">
-                                    <select className="form-select">
-                                        <option>Buy</option>
-                                        <option>Rent</option>
-                                        <option>PG / Co-living</option>
-                                    </select>
-                                </div>
-                                <div className="col-md-3">
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        placeholder="Budget (₹)"
-                                    />
-                                </div>
-                                <div className="col-md-2 d-grid">
-                                    <button className="btn btn-warning text-dark fw-bold">
-                                        Search
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {/* SEARCH BOX */}
+                    <HeroSearch />
                 </div>
             </section>
+
 
             {/* ===== CATEGORIES ===== */}
             <section
@@ -235,6 +334,7 @@ function LandingPage() {
                     <h2 className="fw-bold mb-5  " style={{ letterSpacing: "1px" }}>
                         Top Highlighted Projects
                     </h2>
+
 
                     <div className="row g-4 justify-content-center">
                         {[
@@ -345,6 +445,17 @@ function LandingPage() {
                             </div>
                         ))}
                     </div>
+                    <div className="mt-4">
+                        <a
+                            href="/brochures/property-brochure.pdf"
+                            download
+                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+                        >
+                            📄 Download Full Brochure
+                        </a>
+                    </div>
+
+
                 </div>
 
                 {/* Custom CSS for animation & style */}
@@ -682,6 +793,16 @@ function LandingPage() {
                             ))}
                         </div>
                     </div>
+                    <div className="mt-4">
+                        <a
+                            href="/brochures/property-brochure.pdf"
+                            download
+                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+                        >
+                            📄 Download Full Brochure
+                        </a>
+                    </div>
+
                 </div>
             </section>
 
@@ -956,35 +1077,80 @@ function LandingPage() {
   `}</style>
             </section>
 
-
             {/* ===== CHAT + CONTACT WIDGETS ===== */}
             <div className="position-fixed bottom-0 end-0 m-4 d-flex flex-column align-items-end" style={{ gap: "10px", zIndex: 1050 }}>
+
+                {/* CONTACT BUTTON */}
                 <button className="btn btn-dark rounded-circle shadow-lg p-3" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ width: "60px", height: "60px" }}>
                     <FaEnvelope className="fs-4 text-warning" />
                 </button>
 
-                <button onClick={toggleChat} className="btn btn-warning rounded-circle shadow-lg p-3" style={{ width: "60px", height: "60px" }}>
+                {/* CHAT BUTTON */}
+                <button
+                    onClick={toggleChat}
+                    className="btn btn-warning rounded-circle shadow-lg p-3"
+                    style={{ width: "60px", height: "60px" }}
+                >
                     {showChat ? <FaTimes className="fs-4 text-dark" /> : <FaComments className="fs-4 text-dark" />}
                 </button>
 
+                {/* CHAT BOX */}
                 {showChat && (
-                    <div className="card shadow-lg border-0 mt-3" style={{ width: "320px", borderRadius: "15px", animation: "fadeIn 0.4s ease" }}>
+                    <div
+                        className="card shadow-lg border-0 mt-3"
+                        style={{ width: "320px", borderRadius: "15px", animation: "fadeIn 0.4s ease" }}
+                    >
                         <div className="card-header bg-warning text-dark fw-bold d-flex justify-content-between align-items-center">
                             <span>💬 Chat with Agent</span>
                             <FaTimes onClick={toggleChat} style={{ cursor: "pointer" }} />
                         </div>
-                        <div className="card-body" style={{ height: "250px", overflowY: "auto", background: "#f9f9f9" }}>
-                            <div className="text-muted small mb-2">👋 Hi there! How can I help you today?</div>
+
+                        {/* MESSAGE AREA */}
+                        <div
+                            className="card-body"
+                            style={{
+                                height: "250px",
+                                overflowY: "auto",
+                                background: "#f9f9f9",
+                            }}
+                        >
+                            {chatMessages.map((msg, i) => (
+                                <div
+                                    key={i}
+                                    className="p-2 mb-2 rounded"
+                                    style={{
+                                        maxWidth: "80%",
+                                        marginLeft: msg.sender === "user" ? "auto" : "0",
+                                        background: msg.sender === "user" ? "#ffe082" : "#e0e0e0",
+                                        fontSize: "14px",
+                                    }}
+                                >
+                                    {msg.text}
+                                </div>
+                            ))}
                         </div>
+
+                        {/* INPUT AREA */}
                         <div className="card-footer bg-light">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Type a message..." />
-                                <button className="btn btn-warning"><FaPaperPlane /></button>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Type a message..."
+                                    value={userInput}
+                                    onChange={(e) => setUserInput(e.target.value)}
+                                    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                                />
+                                <button className="btn btn-warning" onClick={sendMessage}>
+                                    <FaPaperPlane />
+                                </button>
                             </div>
                         </div>
                     </div>
                 )}
+
             </div>
+
 
             {/* ===== CONTACT MODAL ===== */}
             <div className="modal fade" id="contactModal" tabIndex="-1">
@@ -1046,8 +1212,16 @@ function LandingPage() {
             >
                 <div className="container">
                     <h2 className="fw-bold mb-3">Have a Property to Sell?</h2>
-                    <p className="lead mb-4">List your property with PropertyPro and connect instantly with verified buyers.</p>
-                    <button className="btn btn-dark btn-lg rounded-pill px-4 fw-semibold">List Your Property Now</button>
+                    <p className="lead mb-4">
+                        List your property with PropertyPro and connect instantly with verified buyers.
+                    </p>
+
+                    <button
+                        className="btn btn-dark btn-lg rounded-pill px-4 fw-semibold"
+                        onClick={() => navigate("/sellers")}
+                    >
+                        List Your Property Now
+                    </button>
                 </div>
             </section>
 
