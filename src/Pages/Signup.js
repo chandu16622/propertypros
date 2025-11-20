@@ -39,7 +39,7 @@ export default function SignupPage() {
         .form-box {
           width: 400px;
           padding: 30px;
-          margin-right: 200px;
+          margin-right: 430px;
           border-radius: 16px;
           background: rgba(31, 5, 5, 0.23);
           backdrop-filter: blur(18px);
