@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -20,57 +22,65 @@ function Footer() {
 
       <div className="container mt-4">
         <div className="row gy-4 text-center text-md-start">
-          {/* Brand Info */}
+          {/* BRAND + SOCIAL LINKS */}
           <div className="col-md-3">
             <h3 className="fw-bold text-warning mb-3">
               Property<span className="text-light">Pro</span>
             </h3>
             <p className="small text-secondary">
-              Your trusted partner for real estate — discover verified homes, premium rentals, and commercial spaces with ease.
+              Your trusted partner for real estate — discover verified homes, premium rentals,
+              and commercial spaces with ease.
             </p>
-            <div className="d-flex justify-content-md-start justify-content-center mt-3">
-              <a href="#" className="text-light me-3 fs-5 social-hover">
-                <i className="fab fa-facebook-f"></i>
+
+            {/* SOCIAL ICONS */}
+            <div className="d-flex justify-content-md-start justify-content-center mt-3 gap-3">
+              <a href="https://facebook.com" target="_blank" className="social-icon">
+                <FaFacebookF />
               </a>
-              <a href="#" className="text-light me-3 fs-5 social-hover">
-                <i className="fab fa-instagram"></i>
+              <a href="https://instagram.com" target="_blank" className="social-icon">
+                <FaInstagram />
               </a>
-              <a href="#" className="text-light me-3 fs-5 social-hover">
-                <i className="fab fa-linkedin-in"></i>
+              <a href="https://linkedin.com" target="_blank" className="social-icon">
+                <FaLinkedinIn />
               </a>
-              <a href="#" className="text-light fs-5 social-hover">
-                <i className="fab fa-twitter"></i>
+              <a href="https://twitter.com" target="_blank" className="social-icon">
+                <FaTwitter />
+              </a>
+              <a href="https://youtube.com" target="_blank" className="social-icon">
+                <FaYoutube />
               </a>
             </div>
           </div>
 
-          {/* Explore */}
+          {/* EXPLORE SECTION */}
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Explore</h6>
             <ul className="list-unstyled small">
-              <li><a href="#" className="footer-link">Rent Property</a></li>
-              <li><a href="#" className="footer-link">Commercial Spaces</a></li>
-              <li><a href="#" className="footer-link">Luxury Projects</a></li>
+              <li><Link to="/rent" className="footer-link">Rent Property</Link></li>
+              <li><Link to="/commercial" className="footer-link">Commercial Spaces</Link></li>
+              <li><Link to="/luxury" className="footer-link">Luxury Projects</Link></li>
+              <li><Link to="/buy" className="footer-link">Buy Property</Link></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* SUPPORT SECTION */}
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Support</h6>
             <ul className="list-unstyled small">
-              <li><a href="#" className="footer-link">About Us</a></li>
-              <li><a href="#" className="footer-link">Privacy Policy</a></li>
-              <li><a href="#" className="footer-link">Terms & Conditions</a></li>
-              <li><a href="#" className="footer-link">Contact Us</a></li>
+              <li><Link to="/about" className="footer-link">About Us</Link></li>
+              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="footer-link">Terms & Conditions</Link></li>
+              <li><Link to="/contactus" className="footer-link">Contact Us</Link></li>
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* NEWSLETTER */}
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Stay Updated</h6>
             <p className="small text-secondary">
               Subscribe to get exclusive property updates, market insights, and offers directly to your inbox.
             </p>
+
             <form className="d-flex mt-2">
               <input
                 type="email"
@@ -89,6 +99,7 @@ function Footer() {
         </div>
 
         <hr className="border-secondary mt-5" />
+
         <div className="text-center small text-secondary">
           <p className="mb-0">
             © {new Date().getFullYear()}{" "}
@@ -98,7 +109,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Glow effect */}
+      {/* GLOW EFFECT */}
       <div
         style={{
           position: "absolute",
@@ -113,10 +124,26 @@ function Footer() {
         }}
       ></div>
 
+      {/* EXTRA STYLES */}
       <style>{`
-        .footer-link { color: #bbb; text-decoration: none; transition: color 0.3s ease; }
-        .footer-link:hover { color: #ffc107; }
-        .social-hover:hover { color: #ffc107 !important; transform: scale(1.1); transition: all 0.2s ease; }
+        .footer-link {
+          color: #bbb;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+          color: #ffc107;
+        }
+
+        .social-icon {
+          color: #bbb;
+          font-size: 1.2rem;
+          transition: 0.3s ease;
+        }
+        .social-icon:hover {
+          color: #ffc107;
+          transform: scale(1.2);
+        }
       `}</style>
     </footer>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -15,12 +15,15 @@ import Signup from "./Pages/Signup";
 import ProjectDetails from "./Pages/ProjectDetails";
 import BuyerProperties from "./Pages/BuyerProperties";
 import SellerProperties from "./Pages/SellerProperties";
+import Contactus from "./Pages/Contactus";
+import Dashboard from "./Pages/Dashboard";
 
 
 // ⭐ Import Rentals page
 import Rentals from "./Pages/Rentals";
 
 function App() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   return (
     <Router>
       {/* Navbar visible on all pages */}
@@ -34,10 +37,12 @@ function App() {
         <Route path="/sellers" element={<Sellers />} />
         <Route path="/services" element={<Services />} />
         <Route path="/login" element={<Login />} />
+         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/buyer-properties" element={<BuyerProperties />} />
         <Route path="/seller-properties" element={<SellerProperties />} />
+        <Route path="/contact-us" element={<Contactus />} />
 
 
 

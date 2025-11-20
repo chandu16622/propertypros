@@ -447,15 +447,15 @@ function LandingPage() {
                             </div>
                         ))}
                     </div>
-                   <div className="mt-4">
-      <a
-        href={brochure}
-        download="Property-Brochure.pdf"
-        className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
-      >
-        📄 Download Full Brochure
-      </a>
-    </div>
+                    <div className="mt-4">
+                        <a
+                            href={brochure}
+                            download="Property-Brochure.pdf"
+                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+                        >
+                            📄 Download Full Brochure
+                        </a>
+                    </div>
 
 
                 </div>
@@ -796,14 +796,14 @@ function LandingPage() {
                         </div>
                     </div>
                     <div className="mt-4">
-      <a
-        href={brochure}
-        download="Property-Brochure.pdf"
-        className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
-      >
-        📄 Download Full Brochure
-      </a>
-    </div>
+                        <a
+                            href={brochure}
+                            download="Property-Brochure.pdf"
+                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+                        >
+                            📄 Download Full Brochure
+                        </a>
+                    </div>
 
                 </div>
             </section>
