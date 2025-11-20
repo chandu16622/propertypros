@@ -39,6 +39,8 @@ import seller4 from "../images/seller4.jpg";
 import seller5 from "../images/seller5.jpg";
 import seller6 from "../images/seller6.jpg";
 import cta from "../images/cta.jpg";
+import brochure from "../images/property-brochure.pdf";
+
 
 /**
  * LandingPage (optimized)
@@ -445,15 +447,15 @@ function LandingPage() {
                             </div>
                         ))}
                     </div>
-                    <div className="mt-4">
-                        <a
-                            href="/brochures/property-brochure.pdf"
-                            download
-                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
-                        >
-                            📄 Download Full Brochure
-                        </a>
-                    </div>
+                   <div className="mt-4">
+      <a
+        href={brochure}
+        download="Property-Brochure.pdf"
+        className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+      >
+        📄 Download Full Brochure
+      </a>
+    </div>
 
 
                 </div>
@@ -794,14 +796,14 @@ function LandingPage() {
                         </div>
                     </div>
                     <div className="mt-4">
-                        <a
-                            href="/brochures/property-brochure.pdf"
-                            download
-                            className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
-                        >
-                            📄 Download Full Brochure
-                        </a>
-                    </div>
+      <a
+        href={brochure}
+        download="Property-Brochure.pdf"
+        className="btn btn-warning text-dark fw-bold px-4 py-2 rounded-pill"
+      >
+        📄 Download Full Brochure
+      </a>
+    </div>
 
                 </div>
             </section>

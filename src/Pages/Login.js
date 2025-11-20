@@ -38,7 +38,7 @@ export default function LoginPage() {
         .form-box {
           width: 330px;
           padding: 30px;
-          margin-right:620px;
+          margin-right:600px;
           border-radius: 16px;
           background: rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(18px);
