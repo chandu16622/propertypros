@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Hero from "../images/hero.jpg";
 import { useNavigate } from "react-router-dom";
-
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -36,15 +35,16 @@ export default function LoginPage() {
 
         /* GLASS FORM ON RIGHT */
         .form-box {
-          width: 330px;
+          width: 400px;
           padding: 30px;
-          margin-right:600px;
+          margin-right:200px;
+          height: 400px;
           border-radius: 16px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(31, 5, 5, 0.23);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(248, 238, 150, 0.86);
         }
 
         .brand-wrapper {
@@ -107,8 +107,8 @@ export default function LoginPage() {
 
         <div className="form-box">
           <div className="brand-wrapper">
-            <h1 className="brand">Property Pro</h1>
-            <p className="tagline text-black">Your trusted properties across India </p>
+            <h1 className="brand">Property<span className="text-white">Pro</span></h1>
+            <p className="lead  text-black">Your trusted properties across India </p>
           </div>
 
           <Form onSubmit={handleLogin}>

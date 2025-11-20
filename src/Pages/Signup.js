@@ -37,11 +37,11 @@ export default function SignupPage() {
 
         /* SAME GLASS BOX STYLE AS LOGIN */
         .form-box {
-          width: 330px;
+          width: 400px;
           padding: 30px;
-          margin-right: 600px;
+          margin-right: 200px;
           border-radius: 16px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(31, 5, 5, 0.23);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -107,8 +107,8 @@ export default function SignupPage() {
 
         <div className="form-box">
           <div className="brand-wrapper">
-            <h1 className="brand">Property Pro</h1>
-            <p className="tagline text-black">Join us and explore properties across India</p>
+            <h1 className="brand">Property<span className="text-white">Pro</span></h1>
+            <p className="lead  text-black">Join us and explore properties across India</p>
           </div>
 
           <Form onSubmit={handleSignup}>

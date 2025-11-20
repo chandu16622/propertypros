@@ -4,141 +4,148 @@ import {
   FaUserTie,
   FaArrowRight
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Buyers() {
-  return (
-    <>
-      {/* BUYERS HERO SECTION */}
-      <section
-        className="buyers-hero d-flex align-items-center text-center"
-        data-aos="fade-up"
-         style={{ paddingTop: "120px" }} 
-      >
-        <div className="container">
-          <div className="hero-glass p-4 p-md-5 mx-auto">
-            <h1 className="fw-bold mb-3 hero-title">
-              Find Your Perfect Home Today
-            </h1>
+  const navigate = useNavigate();
 
-            <p className="hero-subtitle mb-4">
-              Explore verified listings, premium locations, and tailored recommendations.
-            </p>
 
-            {/* SEARCH BAR */}
-            <div className="hero-search shadow-lg rounded-pill d-flex align-items-center">
-              <input
-                type="text"
-                className="form-control border-0 rounded-pill px-3 py-2"
-                placeholder="Search by location, budget or home type..."
-              />
-              <button className="btn btn-warning rounded-pill px-4 fw-semibold search-btn">
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+  function Buyers() {
+    return (
+      <>
+        {/* BUYERS HERO SECTION */}
+        <section
+          className="buyers-hero d-flex align-items-center text-center"
+          data-aos="fade-up"
+          style={{ paddingTop: "120px" }}
+        >
+          <div className="container">
+            <div className="hero-glass p-4 p-md-5 mx-auto">
+              <h1 className="fw-bold mb-3 hero-title">
+                Find Your Perfect Home Today
+              </h1>
 
-      {/* MAIN CONTENT */}
-      <div
-        className="container-fluid"
-        style={{
-          paddingTop: "130px",
-          paddingBottom: "80px",
-          background: "linear-gradient(135deg, #fdf7e3 0%, #fff3c4 100%)",
-        }}
-      >
-        {/* HEADER */}
-        <div className="text-center mb-5" data-aos="fade-up">
-          <h1
-            className="fw-bold mb-3"
-            style={{
-              color: "#ffb300",
-              fontSize: "3rem",
-              letterSpacing: "1px",
-            }}
-          >
-            Find Your Dream Home
-          </h1>
-          <p
-            className="lead text-muted"
-            style={{ maxWidth: "700px", margin: "0 auto" }}
-          >
-            Explore trusted listings, premium residential projects, and accurate
-            market insights — all in one place.
-          </p>
-        </div>
+              <p className="hero-subtitle mb-4">
+                Explore verified listings, premium locations, and tailored recommendations.
+              </p>
 
-        {/* MAIN CARDS */}
-        <div className="container">
-          <div className="row g-4">
-            {/* LEFT CARD */}
-            <div className="col-md-6" data-aos="fade-right">
-              <div className="buyer-card shadow-lg">
-                <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
-                  <FaUserTie className="me-2 text-warning fs-3" />
-                  Why Choose Us?
-                </h4>
-
-                <p className="text-muted">
-                  Buying a home is a major milestone — we simplify the entire process
-                  with reliable insights, trusted listings, and expert support at
-                  every step.
-                </p>
-
-                <ul className="buyer-list mt-3">
-                  <li>✔ Verified & Trusted Property Listings</li>
-                  <li>✔ Compare Amenities, Prices & Localities</li>
-                  <li>✔ Instant Connect With Top Real Estate Agents</li>
-                  <li>✔ Personalized Alerts for Preferred Properties</li>
-                  <li>✔ Home Loan Assistance & Documentation Support</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* RIGHT CARD */}
-            <div className="col-md-6" data-aos="fade-left">
-              <div className="buyer-card shadow-lg">
-                <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
-                  <FaHome className="me-2 text-warning fs-3" />
-                  What You Get
-                </h4>
-
-                <p className="text-muted">
-                  Whether you're searching for affordable homes or luxury villas, we
-                  offer detailed insights and full support throughout your buying
-                  journey.
-                </p>
-
-                <ul className="buyer-list mt-3">
-                  <li>🏡 Virtual Property Walkthroughs</li>
-                  <li>📊 Real-Time Market Trends & Area Insights</li>
-                  <li>📝 Full Assistance With Legal Verification</li>
-                  <li>💰 Best Price Negotiation Assistance</li>
-                  <li>📅 One-Click Scheduling for Site Visits</li>
-                </ul>
+              {/* SEARCH BAR */}
+              <div className="hero-search shadow-lg rounded-pill d-flex align-items-center">
+                <input
+                  type="text"
+                  className="form-control border-0 rounded-pill px-3 py-2"
+                  placeholder="Search by location, budget or home type..."
+                />
+                <button className="btn btn-warning rounded-pill px-4 fw-semibold search-btn">
+                  Search
+                </button>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* BUTTON */}
-          <div className="text-center mt-5" data-aos="zoom-in">
-            <button
-              className="btn btn-warning text-dark fw-semibold px-5 py-3 rounded-pill explore-btn"
+        {/* MAIN CONTENT */}
+        <div
+          className="container-fluid"
+          style={{
+            paddingTop: "130px",
+            paddingBottom: "80px",
+            background: "linear-gradient(135deg, #fdf7e3 0%, #fff3c4 100%)",
+          }}
+        >
+          {/* HEADER */}
+          <div className="text-center mb-5" data-aos="fade-up">
+            <h1
+              className="fw-bold mb-3"
               style={{
-                fontSize: "1.2rem",
-                boxShadow: "0 12px 25px rgba(0,0,0,0.15)",
-                transition: "all 0.3s ease",
+                color: "#ffb300",
+                fontSize: "3rem",
+                letterSpacing: "1px",
               }}
             >
-              Explore Properties <FaArrowRight className="ms-2" />
-            </button>
+              Find Your Dream Home
+            </h1>
+            <p
+              className="lead text-muted"
+              style={{ maxWidth: "700px", margin: "0 auto" }}
+            >
+              Explore trusted listings, premium residential projects, and accurate
+              market insights — all in one place.
+            </p>
+          </div>
+
+          {/* MAIN CARDS */}
+          <div className="container">
+            <div className="row g-4">
+              {/* LEFT CARD */}
+              <div className="col-md-6" data-aos="fade-right">
+                <div className="buyer-card shadow-lg">
+                  <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <FaUserTie className="me-2 text-warning fs-3" />
+                    Why Choose Us?
+                  </h4>
+
+                  <p className="text-muted">
+                    Buying a home is a major milestone — we simplify the entire process
+                    with reliable insights, trusted listings, and expert support at
+                    every step.
+                  </p>
+
+                  <ul className="buyer-list mt-3">
+                    <li>✔ Verified & Trusted Property Listings</li>
+                    <li>✔ Compare Amenities, Prices & Localities</li>
+                    <li>✔ Instant Connect With Top Real Estate Agents</li>
+                    <li>✔ Personalized Alerts for Preferred Properties</li>
+                    <li>✔ Home Loan Assistance & Documentation Support</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* RIGHT CARD */}
+              <div className="col-md-6" data-aos="fade-left">
+                <div className="buyer-card shadow-lg">
+                  <h4 className="fw-bold text-dark mb-3 d-flex align-items-center">
+                    <FaHome className="me-2 text-warning fs-3" />
+                    What You Get
+                  </h4>
+
+                  <p className="text-muted">
+                    Whether you're searching for affordable homes or luxury villas, we
+                    offer detailed insights and full support throughout your buying
+                    journey.
+                  </p>
+
+                  <ul className="buyer-list mt-3">
+                    <li>🏡 Virtual Property Walkthroughs</li>
+                    <li>📊 Real-Time Market Trends & Area Insights</li>
+                    <li>📝 Full Assistance With Legal Verification</li>
+                    <li>💰 Best Price Negotiation Assistance</li>
+                    <li>📅 One-Click Scheduling for Site Visits</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* BUTTON */}
+            <div className="text-center mt-5" data-aos="zoom-in">
+              <button
+                className="btn btn-warning text-dark fw-semibold px-5 py-3 rounded-pill explore-btn"
+                onClick={() => navigate("/buyer-properties")}
+                style={{
+                  fontSize: "1.2rem",
+                  boxShadow: "0 12px 25px rgba(0,0,0,0.15)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                Explore Properties <FaArrowRight className="ms-2" />
+              </button>
+
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* CUSTOM STYLES */}
-      <style>{`
+        {/* CUSTOM STYLES */}
+        <style>{`
         /* === HERO SECTION === */
         .buyers-hero {
           height: 100vh;
@@ -243,8 +250,13 @@ function Buyers() {
           }
         }
       `}</style>
-    </>
-  );
+      </>
+    );
+    
+  }
+
+
+  return Buyers();
 }
 
 export default Buyers;

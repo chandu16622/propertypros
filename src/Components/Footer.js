@@ -48,7 +48,6 @@ function Footer() {
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Explore</h6>
             <ul className="list-unstyled small">
-              <li><a href="#" className="footer-link">Buy Property</a></li>
               <li><a href="#" className="footer-link">Rent Property</a></li>
               <li><a href="#" className="footer-link">Commercial Spaces</a></li>
               <li><a href="#" className="footer-link">Luxury Projects</a></li>

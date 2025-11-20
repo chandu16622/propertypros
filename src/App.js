@@ -13,6 +13,9 @@ import Services from "./Pages/Services";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import ProjectDetails from "./Pages/ProjectDetails";
+import BuyerProperties from "./Pages/BuyerProperties";
+import SellerProperties from "./Pages/SellerProperties";
+
 
 // ⭐ Import Rentals page
 import Rentals from "./Pages/Rentals";
@@ -33,6 +36,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
+        <Route path="/buyer-properties" element={<BuyerProperties />} />
+        <Route path="/seller-properties" element={<SellerProperties />} />
+
+
 
         {/* ⭐ Added Rentals Route */}
         <Route path="/rentals" element={<Rentals />} />

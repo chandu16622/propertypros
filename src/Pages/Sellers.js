@@ -1,10 +1,13 @@
 import React from "react";
 import { FaUserTie, FaHome, FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Sellers() {
+  const navigate = useNavigate();
+
   return (
     <>
-     {/* MAIN CONTENT */}
+      {/* MAIN CONTENT */}
       <div
         className="container-fluid"
         style={{
@@ -80,14 +83,10 @@ function Sellers() {
           {/* BUTTON */}
           <div className="text-center mt-5" data-aos="zoom-in">
             <button
-              className="btn btn-warning text-dark fw-semibold px-5 py-3 rounded-pill explore-btn"
-              style={{
-                fontSize: "1.2rem",
-                boxShadow: "0 12px 25px rgba(0,0,0,0.15)",
-                transition: "all 0.3s ease",
-              }}
+              className="btn btn-warning fw-semibold px-4 py-2 rounded-pill"
+              onClick={() => navigate("/seller-properties")}
             >
-              List Your Property <FaArrowRight className="ms-2" />
+              Explore Listings
             </button>
           </div>
         </div>
