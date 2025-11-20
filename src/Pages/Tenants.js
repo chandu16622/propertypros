@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {
   FaShieldAlt,
   FaHome,
-  FaUserCheck,
-  FaHandshake,
-  FaFileSignature,
   FaArrowRight,
 } from "react-icons/fa";
 
