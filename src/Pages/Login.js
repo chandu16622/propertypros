@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import Hero from "../images/hero.jpg";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginPage() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -11,6 +11,8 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log("Login clicked");
+
     // ✅ Set login status in localStorage
     localStorage.setItem("isLoggedIn", "true");
     navigate("/dashboard"); // ✅ Navigate to dashboard

@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import Navbar from "./Components/Navbar";
+import Dashnavbar from "./Components/Dashnavbar";
 import Footer from "./Components/Footer";
 import LandingPage from "./Components/LandingPage";
 import Buyers from "./Pages/Buyers";
@@ -17,19 +18,19 @@ import BuyerProperties from "./Pages/BuyerProperties";
 import SellerProperties from "./Pages/SellerProperties";
 import Contactus from "./Pages/Contactus";
 import Dashboard from "./Pages/Dashboard";
-
-
-// ⭐ Import Rentals page
 import Rentals from "./Pages/Rentals";
 
-function App() {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  return (
-    <Router>
-      {/* Navbar visible on all pages */}
-      <Navbar />
+function LayoutWrapper() {
+  const location = useLocation();
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
-      {/* Page Routes */}
+  // Show Navbar ONLY on Landing Page
+  const showNavbar = location.pathname === "/";
+
+  return (
+    <>
+      {showNavbar ? <Navbar /> : <Dashnavbar />}
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/buyers" element={<Buyers />} />
@@ -37,23 +38,24 @@ function App() {
         <Route path="/sellers" element={<Sellers />} />
         <Route path="/services" element={<Services />} />
         <Route path="/login" element={<Login />} />
-         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/buyer-properties" element={<BuyerProperties />} />
         <Route path="/seller-properties" element={<SellerProperties />} />
         <Route path="/contact-us" element={<Contactus />} />
-
-
-
-        {/* ⭐ Added Rentals Route */}
         <Route path="/rentals" element={<Rentals />} />
       </Routes>
 
-      {/* Footer visible on all pages */}
       <Footer />
-    </Router>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <LayoutWrapper />
+    </Router>
+  );
+}
