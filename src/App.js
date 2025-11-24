@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Navbar from "./Components/Navbar";
 import Dashnavbar from "./Components/Dashnavbar";
 import Footer from "./Components/Footer";
+import ScrollToTop from "./Components/ScrollToTop";
 import LandingPage from "./Components/LandingPage";
 import Buyers from "./Pages/Buyers";
 import Tenants from "./Pages/Tenants";
@@ -30,6 +31,7 @@ function LayoutWrapper() {
   return (
     <>
       {showNavbar ? <Navbar /> : <Dashnavbar />}
+      <ScrollToTop behavior="auto" />
 
       <Routes>
         <Route path="/" element={<LandingPage />} />

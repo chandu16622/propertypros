@@ -34,19 +34,19 @@ function Footer() {
 
             {/* SOCIAL ICONS */}
             <div className="d-flex justify-content-md-start justify-content-center mt-3 gap-3">
-              <a href="https://facebook.com" target="_blank" className="social-icon">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer noopener" className="social-icon">
                 <FaFacebookF />
               </a>
-              <a href="https://instagram.com" target="_blank" className="social-icon">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer noopener" className="social-icon">
                 <FaInstagram />
               </a>
-              <a href="https://linkedin.com" target="_blank" className="social-icon">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer noopener" className="social-icon">
                 <FaLinkedinIn />
               </a>
-              <a href="https://twitter.com" target="_blank" className="social-icon">
+              <a href="https://twitter.com" target="_blank" rel="noreferrer noopener" className="social-icon">
                 <FaTwitter />
               </a>
-              <a href="https://youtube.com" target="_blank" className="social-icon">
+              <a href="https://youtube.com" target="_blank" rel="noreferrer noopener" className="social-icon">
                 <FaYoutube />
               </a>
             </div>
@@ -56,10 +56,10 @@ function Footer() {
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Explore</h6>
             <ul className="list-unstyled small">
-              <li><Link to="/rent" className="footer-link">Rent Property</Link></li>
-              <li><Link to="/commercial" className="footer-link">Commercial Spaces</Link></li>
-              <li><Link to="/luxury" className="footer-link">Luxury Projects</Link></li>
-              <li><Link to="/buy" className="footer-link">Buy Property</Link></li>
+              <li><Link to="/tenants" className="footer-link">Rent Property</Link></li>
+              <li><Link to="/buyers" className="footer-link">Commercial Spaces</Link></li>
+              <li><Link to="/sellers" className="footer-link">Luxury Projects</Link></li>
+              <li><Link to="/buyer-properties" className="footer-link">Buy Property</Link></li>
             </ul>
           </div>
 
@@ -67,10 +67,10 @@ function Footer() {
           <div className="col-md-3">
             <h6 className="fw-bold text-warning mb-3">Support</h6>
             <ul className="list-unstyled small">
-              <li><Link to="/about" className="footer-link">About Us</Link></li>
-              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="footer-link">Terms & Conditions</Link></li>
-              <li><Link to="/contactus" className="footer-link">Contact Us</Link></li>
+              <li><Link to="/services" className="footer-link">About Us</Link></li>
+              <li><Link to="/services" className="footer-link">Privacy Policy</Link></li>
+              <li><Link to="/services" className="footer-link">Terms & Conditions</Link></li>
+              <li><Link to="/contact-us" className="footer-link">Contact Us</Link></li>
             </ul>
           </div>
 

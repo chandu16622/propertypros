@@ -1,5 +1,5 @@
 // src/Pages/BuyerProperties.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     FaSearch,
     FaMapMarkerAlt,
@@ -28,6 +28,10 @@ import dev6 from "../images/dev6.jpg";
 const PER_PAGE = 3;
 
 function BuyerProperties() {
+    // ensure the page is at the top when this component mounts
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const [search, setSearch] = useState("");
     const [selectedProperty, setSelectedProperty] = useState(null);
     const [scheduleModal, setScheduleModal] = useState(false);
