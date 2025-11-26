@@ -290,7 +290,7 @@ const Contact = () => {
                     <div className="contact-right">
                         <div className="contact-right-header">
                             <h3>Reach Us Directly</h3>
-                            <p>You can connect with our support team for any queries.</p>
+                            <p>You can connect with our support team for any queries.Whether you're buying, selling, renting, or simply exploring options, we’re committed to providing you with fast, reliable, and friendly support.</p>
                         </div>
 
                         <div className="info-list">

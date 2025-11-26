@@ -25,21 +25,22 @@ export default function SignupPage() {
 
         /* FULL BACKGROUND */
         .full-container {
-          height: 100vh;
+          min-height: 100vh;
           width: 100%;
           background-image: url(${Hero});
           background-size: cover;
           background-position: center;
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
+          padding: 20px;
         }
 
-        /* SAME GLASS BOX STYLE AS LOGIN */
+        /* RESPONSIVE GLASS BOX */
         .form-box {
-          width: 400px;
+          width: 100%;
+          max-width: 400px;
           padding: 30px;
-          margin-right: 430px;
           border-radius: 16px;
           background: rgba(31, 5, 5, 0.23);
           backdrop-filter: blur(18px);
@@ -52,11 +53,13 @@ export default function SignupPage() {
           text-align: center;
           margin-bottom: 20px;
         }
+
         .brand {
           font-size: 32px;
           color: #eab308;
           font-weight: bold;
         }
+
         .tagline {
           margin-bottom: 15px;
           color: #fff;
@@ -69,6 +72,7 @@ export default function SignupPage() {
 
         .password-box {
           position: relative;
+          margin-bottom: 15px;
         }
 
         .eye-icon {
@@ -88,6 +92,12 @@ export default function SignupPage() {
           border-radius: 8px;
           font-size: 16px;
           font-weight: 600;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+
+        .signup-btn:hover {
+          background: #ffb700;
         }
 
         .login-text {
@@ -96,19 +106,48 @@ export default function SignupPage() {
           font-size: 14px;
           color: #fff;
         }
-          .password-box {
-  position: relative;
-  margin-bottom: 15px;   /* ADD THIS */
-}
 
+        /* TABLET & MOBILE */
+        @media (max-width: 768px) {
+          .form-box {
+            padding: 25px;
+          }
+
+          .brand {
+            font-size: 28px;
+          }
+
+          .signup-btn {
+            padding: 12px;
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .full-container {
+            padding: 15px;
+          }
+
+          .form-box {
+            padding: 20px;
+            width: 100%;
+          }
+
+          .brand {
+            font-size: 24px;
+          }
+
+          .login-text {
+            font-size: 12px;
+          }
+        }
       `}</style>
 
       <div className="full-container">
-
         <div className="form-box">
           <div className="brand-wrapper">
             <h1 className="brand">Property<span className="text-white">Pro</span></h1>
-            <p className="lead  text-black">Join us and explore properties across India</p>
+            <p className="lead text-black">Join us and explore properties across India</p>
           </div>
 
           <Form onSubmit={handleSignup}>
