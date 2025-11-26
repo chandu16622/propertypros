@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 // src/Pages/Rentals.js
 import React, { useEffect, useMemo, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -534,7 +535,7 @@ export default function Rentals() {
             {visible.length > 0 ? (
               visible.map((rental) => (
                 <div key={rental.id} className="col-12">
-                  <article className="card rental-card border-0 shadow-sm overflow-hidden" role="article">
+                  <article className="card rental-card border-0 shadow-sm overflow-hidden">
                     <div className="row g-0">
                       {/* full-image-left layout on md up */}
                       <div className="col-md-5">
