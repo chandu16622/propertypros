@@ -243,14 +243,41 @@ function LandingPage() {
     return (
         <div >
             {/* ===== HERO SECTION ===== */}
-            <section
+           <section
                 className="d-flex align-items-center justify-content-center text-center text-white"
                 style={{
                     height: "100vh",
                     background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${hero}) center/cover no-repeat`,
                     backgroundAttachment: "scroll",
                     position: "relative",
+                    pointerEvents: showChat ? "none" : undefined,   // <- disable interactions/hover when chat is open
+                    userSelect: showChat ? "none" : undefined,     // <- prevent text selection while chat active
                 }}
+                aria-hidden={showChat} // assistive tech hint that hero is inactive when chat is open
+            >
+                <div className="container" data-aos="fade-up">
+                    <h1 className="display-4 fw-bold mb-3">
+                        Find Your Perfect <span className="text-warning">Home</span>
+                    </h1>
+                    <p className="lead mb-5">
+                        Discover, buy, or rent verified properties across India’s top
+                        locations.
+                    </p>
+
+                    {/* SEARCH BOX */}
+                    <HeroSearch />
+                </div>
+            </section>  <section
+                className="d-flex align-items-center justify-content-center text-center text-white"
+                style={{
+                    height: "100vh",
+                    background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${hero}) center/cover no-repeat`,
+                     backgroundAttachment: "fixed",
+                    position: "fixed",
+                    pointerEvents: showChat ? "none" : undefined,   // <- disable interactions/hover when chat is open
+                    userSelect: showChat ? "none" : undefined,     // <- prevent text selection while chat active
+                }}
+                aria-hidden={showChat} // assistive tech hint that hero is inactive when chat is open
             >
                 <div className="container" data-aos="fade-up">
                     <h1 className="display-4 fw-bold mb-3">

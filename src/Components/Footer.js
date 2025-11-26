@@ -11,12 +11,13 @@ function Footer() {
         position: "relative",
         overflow: "hidden",
         zIndex: 1,
+        paddingLeft: "100px",
       }}
     >
       <div
         style={{
           height: "5px",
-          background: "linear-gradient(90deg, #ffc107, #ff9800, #ff5722)",
+          background: "linear-gradient(90deg, #0e0d0cff, #0e0d0dff, #0f0f0fff)",
         }}
       ></div>
 
@@ -105,7 +106,7 @@ function Footer() {
             © {new Date().getFullYear()}{" "}
             <span className="text-warning fw-semibold">PropertyPro</span>. All Rights Reserved.
           </p>
-          <p className="text-success">Designed with ❤️ by the PropertyPro Frontend Team</p>
+          <p className="text-success">Designed with ❤️ by the PropertyPro </p>
         </div>
       </div>
 

@@ -21,18 +21,21 @@ function Navbar() {
   ];
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm"
-      style={{
-        background:
-          scrolled || location.pathname !== "/"
-            ? "rgba(0, 0, 0, 0.8)"
-            : "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(175, 128, 9, 0.3))",
-        backdropFilter: "blur(8px)",
-        transition: "background-color 0.4s ease, box-shadow 0.3s ease",
-        boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.4)" : "none",
-      }}
-    >
+       <nav
+        className="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm"
+        style={{
+          minHeight: "80px",            // increased navbar height
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          background:
+            scrolled || location.pathname !== "/"
+              ? "rgba(0, 0, 0, 0.8)"
+              : "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(175, 128, 9, 0.3))",
+          backdropFilter: "blur(8px)",
+          transition: "background-color 0.4s ease, box-shadow 0.3s ease",
+          boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.4)" : "none",
+        }}
+      >
       <div className="container">
         {/* ✔ FIXED: Brand logo should navigate to home page */}
         <Link to="/" className="navbar-brand fw-bold fs-3 text-white">

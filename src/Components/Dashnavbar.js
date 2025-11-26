@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaBed, FaTag, FaCogs } from "react-icons/fa";
 
 
 function Dashnavbar() {
@@ -63,10 +62,10 @@ function Dashnavbar() {
     }, [showSideNav, sidebarOpen]);
 
     const navItems = [
-        { name: "For Buyers", path: "/buyers", icon: <FaHome /> },
-        { name: "For Tenants", path: "/tenants", icon: <FaBed /> },
-        { name: "For Sellers", path: "/sellers", icon: <FaTag /> },
-        { name: "Services", path: "/services", icon: <FaCogs /> },
+        { name: "Buyers", path: "/buyers" },
+        { name: "Tenants", path: "/tenants" },
+        { name: "Sellers", path: "/sellers" },
+        { name: "Services", path: "/services" },
     ];
 
     return (
@@ -128,27 +127,29 @@ function Dashnavbar() {
             id="sideNav"
             role="navigation"
             aria-hidden={!sidebarOpen}
+            aria-expanded={sidebarOpen}
         >
-            <button
-                aria-label="Close sidebar"
-                className="btn btn-sm btn-outline-light close-sidebar"
-                onClick={() => setSidebarOpen(false)}
-            >
-                ×
-            </button>
-            <div className="p-3">
-                <h5 className="text-warning fw-bold mb-3">Explore</h5>
-                <ul className="list-unstyled">
+            <div className="p-3 position-relative">
+                <button
+                    aria-label="Close sidebar"
+                    type="button"
+                    className="btn btn-sm btn-outline-light close-sidebar"
+                    onClick={() => setSidebarOpen(false)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSidebarOpen(false); }}
+                >
+                    ×
+                </button>
+
+                <ul className="list-unstyled mb-0">
                     {navItems.map((item) => (
-                        <li key={item.name} className="mb-3 text-center sidebar-item" title={item.name}>
+                        <li key={item.name} className="mb-2 sidebar-item">
                             <Link
                                 to={item.path}
                                 onClick={() => setSidebarOpen(false)}
-                                className={`nav-link d-flex flex-column align-items-center ${location.pathname === item.path ? "text-warning fw-semibold" : "text-light"}`}
+                                className={`nav-link ${location.pathname === item.path ? "text-warning fw-semibold" : "text-light"}`}
                                 aria-label={item.name}
                             >
-                                <div style={{ fontSize: 18 }}>{item.icon}</div>
-                                <span className="side-label mt-1" style={{ fontSize: 10, display: "none" }}>{item.name}</span>
+                                <span className="side-label" style={{ fontSize: 13 }}>{item.name}</span>
                             </Link>
                         </li>
                     ))}
@@ -159,47 +160,79 @@ function Dashnavbar() {
         {/* Overlay for small screens */}
         {showSideNav && sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
 
-            {/* Sidebar styles (local) */}
+           
                 <style>{`
+                /* Make the sidebar compact (small) by default on all viewports */
                 .side-nav{
                     position: fixed;
-                    top: 56px;
+                    top: 56px;                /* sits directly under top navbar */
                     left: 0;
-                    width: 60px; /* smaller width */
+                    width: 100px;             /* small compact width for text */
+                    min-width: 100px;
                     height: calc(100vh - 56px);
-                    background: rgba(10,10,10,0.95);
-                    transform: translateX(-110%);
-                    transition: transform 0.28s ease, width 0.28s ease;
+                    background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(175, 128, 9, 0.3));
+                    border-radius: 0;
+                    transform: translateX(0); /* docked and visible */
+                    transition: width 0.22s ease, box-shadow 0.22s ease;
                     z-index: 1045;
-                    overflow-y: auto;
+                    overflow: hidden;         /* hide overflow */
                     box-shadow: 2px 0 12px rgba(0,0,0,0.25);
                     text-align: center;
+                    padding-top: 8px;
                 }
-                .side-nav.open{ transform: translateX(0); }
-                .side-nav .close-sidebar{ display: inline-block; margin-left: auto; }
-                .side-nav .sidebar-item { padding: 12px 0; }
-                .side-nav .nav-link { color: inherit; }
+
+                /* keep open state visually the same width (still small) but allow different styling if needed */
+                .side-nav.open{
+                    width: 100px;
+                }
+
+                /* text layout */
+                .side-nav .sidebar-item { padding: 8px 0; }
+                .side-nav .nav-link {
+                    color: inherit;
+                    display: block;
+                    text-decoration: none;
+                    padding: 8px 4px;
+                    font-size: 12px;
+                    line-height: 1.2;
+                    word-break: break-word;
+                }
+                .side-nav .nav-link .side-label{ display: block; } /* show text */
                 .side-nav .nav-link:hover { color: #ffc107; }
-                .side-nav .side-label{ display:none; }
-                .sidebar-overlay{ position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1040; }
-                @media (min-width: 768px){
-                    .side-nav{ transform: translateX(0); min-width: 60px; }
-                    .sidebar-overlay{ display: none; }
-                }
-                /* Keep side-nav compact with no hover expansion */
-                .side-nav { width: 60px; }
-                .side-nav .side-label{ display: none; }
-                
-                /* When the sidebar is open on larger screens, shift the page content to the right */
+
+                /* hide the close button on compact docked sidebar */
+                .side-nav .close-sidebar{ display: none; }
+
+                /* overlay not used for compact docked sidebar */
+                .sidebar-overlay{ display: none; }
+
+                /* Ensure content is shifted to accommodate compact sidebar on larger screens */
                 @media (min-width: 768px) {
                     body.has-side-nav > .container,
                     body.has-side-nav > .container-fluid,
                     body.has-side-nav #root > div {
-                        padding-left: 60px !important;
-                        transition: padding-left 0.28s ease;
+                        padding-left: 100px !important;
+                        transition: padding-left 0.22s ease;
                     }
                 }
+
+                /* On very small screens keep the sidebar as a centered panel (still compact width) */
+                @media (max-width: 767.98px){
+                    .side-nav{
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 80%;              /* make touch target usable on small screens */
+                        max-width: 320px;
+                        border-radius: 8px;
+                        overflow-y: auto;
+                        padding-top: 8px;
+                    }
+                    .side-nav .nav-link .side-label{ display: block; font-size: 13px; } /* show labels on small panel */
+                    .sidebar-overlay{ display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1060; }
+                    .side-nav .close-sidebar{ display: inline-block; position: absolute; top: 8px; right: 8px; z-index: 1070; }
+                }
             `}</style>
+
         </>
     );
 }

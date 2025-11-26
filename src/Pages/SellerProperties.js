@@ -170,10 +170,10 @@ export default function SellerProperties() {
         createdAt: "2025-04-14",
       },
       {
-        id: 9,
+        id: 10,
         title: "Oceanfront Luxury Villa",
         location: "Goa - North Shore",
-        price: "₹3.75 Cr",
+        price: "₹4.75 Cr",
         beds: 6,
         baths: 6,
         area: "5200 sq.ft",
@@ -183,10 +183,10 @@ export default function SellerProperties() {
         boosted: false,
         createdAt: "2025-04-14",
       },{
-        id: 9,
+        id: 11,
         title: "Oceanfront Luxury Villa",
         location: "Goa - North Shore",
-        price: "₹3.75 Cr",
+        price: "₹6.75 Cr",
         beds: 6,
         baths: 6,
         area: "5200 sq.ft",
@@ -210,6 +210,7 @@ export default function SellerProperties() {
   const [showLeads, setShowLeads] = useState(false);
   const [showBoost, setShowBoost] = useState(false);
   const [scheduleModal, setScheduleModal] = useState(false);
+
 
   // sample leads per property (in a real app you'd fetch this)
   const sampleLeads = {
