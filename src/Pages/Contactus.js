@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaEnvelope, FaPhone, FaLocationDot, FaClock } from "react-icons/fa6";
+import { FaEnvelope, FaPhone, FaLocationDot} from "react-icons/fa6";
 import Hero from "../images/hero.jpg";
 const Contact = () => {
 

@@ -56,7 +56,6 @@ import brochure from "../images/property-brochure.pdf";
 function LandingPage() {
     const [showChat, setShowChat] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const [isNavbarVisible, setIsNavbarVisible] = useState(true);
     const [selectedSeller, setSelectedSeller] = useState(null);
 
 
@@ -85,8 +84,7 @@ function LandingPage() {
 
         // throttled scroll handler
         const handleScroll = throttle(() => {
-            const heroHeight = window.innerHeight * 0.8;
-            setIsNavbarVisible(window.scrollY <= heroHeight);
+            // Keep scroll-top behavior only
             setShowScrollTop(window.scrollY > 300);
         }, 80); // checks every ~80ms
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LandingPage from "./LandingPage";
+
 
 function Dashnavbar() {
     const [scrolled, setScrolled] = useState(false);

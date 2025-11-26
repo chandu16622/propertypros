@@ -123,7 +123,8 @@ function BuyerProperties() {
                                         alt={p.title}
                                         className="w-100"
                                         style={{ height: "240px", objectFit: "cover" }}
-
+                                        loading="lazy"
+                                        decoding="async"
                                     />
 
                                     <div className="card-body">
@@ -262,8 +263,11 @@ function BuyerProperties() {
                                 <>
                                     <img
                                         src={selectedProperty.img}
+                                        alt={selectedProperty.title}
                                         className="w-100"
                                         style={{ height: "330px", objectFit: "cover" }}
+                                        loading="lazy"
+                                        decoding="async"
                                     />
 
                                     <div className="p-4">
@@ -295,17 +299,26 @@ function BuyerProperties() {
                             {/* MAP TAB */}
                             {modalTab === "map" && (
                                 <div className="p-3">
-                                    <iframe
-                                        width="100%"
-                                        height="350"
-                                        style={{ borderRadius: "10px" }}
-                                        src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                                            selectedProperty.location
-                                        )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                    ></iframe>
+                                    {/* Build a safer src for the map embed; fallback to title if location is missing */}
+                                    {(() => {
+                                        const loc = selectedProperty.location || selectedProperty.title || "";
+                                        const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(loc)}&z=13&output=embed`;
+                                        return (
+                                            <iframe
+                                                width="100%"
+                                                height="350"
+                                                style={{ borderRadius: "10px" }}
+                                                loading="lazy"
+                                                allowFullScreen
+                                                title={`Map of ${selectedProperty.title}`}
+                                                src={mapSrc}
+                                                referrerPolicy="no-referrer-when-downgrade"
+                                            />
+                                        );
+                                    })()}
 
                                     <p className="text-center mt-2 text-muted">
-                                        Approx location: <strong>{selectedProperty.location}</strong>
+                                        Approx location: <strong>{selectedProperty.location || selectedProperty.title}</strong>
                                     </p>
                                 </div>
                             )}

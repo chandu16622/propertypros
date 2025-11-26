@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUserTie, FaHome, FaArrowRight } from "react-icons/fa";
+import { FaUserTie, FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function Sellers() {
