@@ -25,12 +25,14 @@ function LayoutWrapper() {
   const location = useLocation();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
-  // Show Navbar ONLY on Landing Page
-  const showNavbar = location.pathname === "/";
+  // Show public Navbar on home page, login, signup, and when NOT logged in on other pages
+  const showPublicNavbar = ["/", "/login", "/signup"].includes(location.pathname) || !isLoggedIn;
+  // Show Dashnavbar on all pages when logged in (except home page which shows public navbar)
+  const showDashnavbar = isLoggedIn && location.pathname !== "/";
 
   return (
     <>
-      {showNavbar ? <Navbar /> : <Dashnavbar />}
+      {showPublicNavbar ? <Navbar /> : showDashnavbar ? <Dashnavbar /> : null}
       <ScrollToTop behavior="auto" />
 
       <Routes>

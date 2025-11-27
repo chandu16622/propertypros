@@ -37,7 +37,7 @@ export default function Login() {
         /* RESPONSIVE GLASS BOX */
         .form-box {
           width: 100%;
-          max-width: 400px;
+          max-width: 420px;
           padding: 30px;
           border-radius: 16px;
           background: rgba(31, 5, 5, 0.23);
@@ -45,11 +45,12 @@ export default function Login() {
           -webkit-backdrop-filter: blur(18px);
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
           border: 1px solid rgba(248, 238, 150, 0.86);
+          margin: 0 12px;
         }
 
         .brand-wrapper {
           text-align: center;
-          margin-bottom: 20px;
+          margin-bottom: 18px;
         }
 
         .brand {
@@ -65,7 +66,7 @@ export default function Login() {
         .lead {
           color: #fff;
           font-size: 14px;
-          margin-bottom: 15px;
+          margin-bottom: 12px;
         }
 
         .text-white {
@@ -77,6 +78,7 @@ export default function Login() {
 
         .input-box {
           margin-bottom: 15px;
+          width: 100%;
         }
 
         .password-box {
@@ -84,21 +86,32 @@ export default function Login() {
           margin-bottom: 15px;
         }
 
+        .password-box .form-control {
+          padding-right: 44px;
+        }
+
         .eye-icon {
           position: absolute;
           right: 12px;
-          top: 12px;
+          top: 50%;
+          transform: translateY(-50%);
           cursor: pointer;
           color: #ccc;
-          font-size: 16px;
+          font-size: 18px;
+          padding: 6px;
+          border-radius: 6px;
+        }
+
+        .eye-icon:active {
+          background: rgba(255,255,255,0.06);
         }
 
         .login-btn {
           width: 100%;
-          padding: 10px;
+          padding: 12px;
           background: #ffc403fa;
           border: none;
-          color: white;
+          color: #0b0b0b;
           border-radius: 8px;
           font-size: 16px;
           font-weight: 600;
@@ -113,7 +126,7 @@ export default function Login() {
 
         .signup-text {
           text-align: center;
-          margin-top: 15px;
+          margin-top: 12px;
           font-size: 14px;
           color: #fff;
         }
@@ -132,8 +145,8 @@ export default function Login() {
         /* TABLET */
         @media (max-width: 768px) {
           .form-box {
-            padding: 25px;
-            max-width: 90%;
+            padding: 22px;
+            max-width: 92%;
           }
 
           .brand {
@@ -146,53 +159,142 @@ export default function Login() {
 
           .login-btn {
             padding: 12px;
-            font-size: 14px;
+            font-size: 15px;
           }
         }
 
         /* MOBILE */
         @media (max-width: 480px) {
           .full-container {
-            padding: 15px;
+            padding: 8px;
             justify-content: center;
+            align-items: center;
+            background-position: center;
+            padding-top: 80px;
+            min-height: 100vh;
           }
 
           .form-box {
-            padding: 20px;
+            padding: 14px;
             width: 100%;
-            max-width: none;
+            max-width: 95%;
+            margin: 0 auto;
+            border-radius: 10px;
+          }
+
+          .brand-wrapper {
+            margin-bottom: 12px;
           }
 
           .brand {
-            font-size: 24px;
+            font-size: 18px;
           }
 
           .lead {
+            font-size: 11px;
+            margin-bottom: 10px;
+          }
+
+          .text-white {
             font-size: 12px;
+            margin-bottom: 6px;
+          }
+
+          .input-box {
+            margin-bottom: 10px;
+            font-size: 14px;
+          }
+
+          .password-box {
+            margin-bottom: 10px;
+          }
+
+          .eye-icon {
+            right: 8px;
+            font-size: 16px;
+            padding: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          .login-btn {
+            padding: 10px;
+            font-size: 14px;
+            margin-top: 8px;
           }
 
           .signup-text {
             font-size: 12px;
+            margin-top: 10px;
           }
 
-          .text-white {
-            font-size: 13px;
+          .signup-text a {
+            font-size: 12px;
           }
         }
 
         /* EXTRA SMALL DEVICES */
         @media (max-width: 360px) {
+          .full-container {
+            padding: 6px;
+            padding-top: 70px;
+          }
+
           .form-box {
-            padding: 15px;
+            padding: 12px;
+            max-width: 98%;
+            border-radius: 8px;
           }
 
           .brand {
-            font-size: 20px;
+            font-size: 16px;
+          }
+
+          .lead {
+            font-size: 10px;
+          }
+
+          .text-white {
+            font-size: 11px;
           }
 
           .login-btn {
-            padding: 10px;
+            padding: 9px;
             font-size: 13px;
+          }
+
+          .eye-icon {
+            right: 6px;
+            font-size: 14px;
+            padding: 5px;
+          }
+
+          .input-box {
+            font-size: 13px;
+          }
+        }
+
+        /* VERY SMALL DEVICES (< 320px) */
+        @media (max-width: 320px) {
+          .form-box {
+            padding: 10px;
+          }
+
+          .brand {
+            font-size: 14px;
+          }
+
+          .lead {
+            font-size: 9px;
+          }
+
+          .text-white {
+            font-size: 10px;
+          }
+
+          .login-btn {
+            padding: 8px;
+            font-size: 12px;
           }
         }
       `}</style>
@@ -218,10 +320,18 @@ export default function Login() {
                 type={showPassword ? "text" : "password"} 
                 placeholder="Enter your password" 
                 required 
+                className="input-box"
+                autoComplete="current-password"
               />
-              <span className="eye-icon" onClick={togglePassword}>
-                <i className="fa-regular fa-eye"></i>
-              </span>
+              <button
+                type="button"
+                className="eye-icon"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                onClick={togglePassword}
+                style={{ background: "none", border: "none" }}
+              >
+                <i className={showPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye"} aria-hidden="true"></i>
+              </button>
             </div>
 
             <button type="submit" className="login-btn">Login</button>
