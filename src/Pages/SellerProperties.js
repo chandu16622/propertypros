@@ -25,7 +25,7 @@ import dev3 from "../images/dev3.jpg";
 import dev4 from "../images/dev4.jpg";
 import dev5 from "../images/dev5.jpg";
 
-const PER_PAGE = 4; 
+const PER_PAGE = 3;
 
 /**
  * SellerProperties - a seller-facing dashboard page.
@@ -204,7 +204,7 @@ export default function SellerProperties() {
   const [listings, setListings] = useState(initialListings);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [selected, setSelected] = useState(null); // selected listing for view/edit
+  const [selected, setSelected] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showLeads, setShowLeads] = useState(false);

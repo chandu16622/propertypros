@@ -11,7 +11,7 @@ function Footer() {
         position: "relative",
         overflow: "hidden",
         zIndex: 1,
-        paddingLeft: "100px",
+        paddingLeft: "var(--sidebar-width, 0)",
       }}
     >
       <div
